@@ -97,12 +97,9 @@ const news = async (title, sort, lang) => {
 
     const data = await respone.json();
 
-    if (data.articles.length > 1) {
-      newsRender(data.articles);
-    }
-    else {
-      error("Kechirasiz siz qidirgan malumot yoq");
-    }
+    console.log(data);
+    newsRender(data.articles);
+
   } catch (err) {
     error(err)
 
@@ -135,4 +132,6 @@ elForm.addEventListener("submit", (evt) => {
 
   news(serchValue, elSelect.value, elSelectLang.value);
 
+
+  elInputSerach.value = ""
 })
