@@ -104,13 +104,8 @@ const news = async (title, sort, lang) => {
       error("Kechirasiz siz qidirgan malumot yoq");
     }
   } catch (err) {
+    error(err)
 
-    if (data.status == "error") {
-      error("Serverda hatolik yuz berdi")
-    }
-    else (
-      error(err)
-    )
   }
   finally {
     spinnerAdd()
