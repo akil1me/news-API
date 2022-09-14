@@ -93,7 +93,7 @@ const error = (err) => {
 
 const news = async (title, sort, lang) => {
   try {
-    const respone = await fetch(`https://newsapi.org/v2/everything?q=${title}&page=1&language=${lang}&pageSize=30&sortBy=${sort}&apiKey=bf6e8298ac724dd3bd62aa5b5332653c`);
+    const respone = await fetch(`https://newsapi.org/v2/everything?q=${title}&page=1&language=${lang}&pageSize=30&sortBy=${sort}&apiKey=7f93f076669541beba1122403d2be83b`);
 
     const data = await respone.json();
 
