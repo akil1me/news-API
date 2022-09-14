@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>News API</title>
+</head>
+
+<body>
+
+  <main>
+    <section class="news">
+      <div class="news__container container">
+        <h1 class="news__title h1 text-center my-4">Search news</h1>
+        <div class="news__inner">
+
+          <div class="row">
+            <div class="col-9">
+              <form class="news__form" autocomplete="off">
+                <div class="row justify-content-between">
+                  <div class="col-3">
+                    <input class="news__input form-control" type="text" name="user-news-input"
+                      placeholder="serch news..." required>
+                  </div>
+
+                  <div class="col-3">
+                    <select class="news__sort form-select" aria-label="user-sort" required>
+                      <option selected hidden value="user-select">sort by</option>
+                      <option value="relevancy">relevancy</option>
+                      <option value="popularity">popularity</option>
+                      <option value="publishedAt">publishedAt</option>
+                    </select>
+                  </div>
+
+                  <div class="col-3">
+                    <select class="news__lang form-select" aria-label="user-lang">
+                      <option selected value="en">English</option>
+                      <option value="ru">Russian</option>
+                    </select>
+                  </div>
+                  <div class="col-2">
+                    <button class="btn btn-info text-white" type="submit">search</button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+
+
+          </div>
+
+          <ul
+            class="news__result-list list-unstyled mt-4 d-flex flex-wrap justify-content-center justify-content-sm-evenly">
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SPINNER -->
+  <div class="news__spinner spinner-border text-danger position-absolute top-0 end-0 bottom-0 start-0 m-auto d-none"
+    role="status" style="width: 3rem; height: 3rem;">
+  </div>
+
+  <!-- MODAL -->
+  <div class="news__modal overflow-scroll">
+    <div class="news__modal-inner position-relative">
+      <div class="position-absolute top-0">asdasd</div>
+    </div>
+  </div>
+
+  <!-- TEMPLATE -->
+  <template id="news__template">
+    <li class="news__item card ms-sm-4 mb-4 bg-light pb-5">
+      <img class="news__img-poster card-img-top rounded position-relative" src="" alt="" width="300" height="300">
+      <div class="card-body">
+        <h2 class="news__card-title h4 text-dark"></h2>
+
+      </div>
+      <button class="news__more-info btn btn-info">more info</button>
+    </li>
+  </template>
+
+  <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
