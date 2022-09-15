@@ -10,6 +10,10 @@ const elSelectLang = document.querySelector(".news__lang");
 
 const elSpinner = document.querySelector(".news__spinner");
 
+let btns = document.querySelectorAll(".prev");
+let elp = document.querySelector(".elp");
+let i = 1;
+
 // Modal
 const elModal = document.querySelector(".news__modal");
 const elModalInner = elModal.querySelector(".news__modal-inner");
@@ -91,9 +95,9 @@ const error = (err) => {
   elResultList.appendChild(errItem);
 }
 
-const news = async (title, sort, lang) => {
+const news = async (title = "ukraine", sort = "publishedAt", lang = "en", page = 1) => {
   try {
-    const respone = await fetch(`https://newsapi.org/v2/everything?q=${title}&page=1&language=${lang}&sortBy=${sort}&apiKey=7f93f076669541beba1122403d2be83b`);
+    const respone = await fetch(`http://newsapi.org/v2/everything?q=${title}&page=${page}&pageSize=20&language=${lang}&sortBy=${sort}&apiKey=7f93f076669541beba1122403d2be83b`);
 
     const data = await respone.json();
 
@@ -107,7 +111,6 @@ const news = async (title, sort, lang) => {
   finally {
     spinnerAdd()
   }
-
 }
 
 function spinnerRemove() {
@@ -117,9 +120,11 @@ function spinnerRemove() {
 function spinnerAdd() {
   elSpinner.classList.add("d-none");
 }
+let serchValue = "ukraine";
+let selectValue = "publishedAt"
+let languageValue = "en";
 
-news("ukraine", "publishedAt", "en");
-
+news(serchValue, selectValue, languageValue, i);
 spinnerRemove();
 
 elForm.addEventListener("submit", (evt) => {
@@ -127,11 +132,29 @@ elForm.addEventListener("submit", (evt) => {
 
   elResultList.innerHTML = null;
   spinnerRemove();
+  i = 1
+  elp.textContent = i
+  serchValue = elInputSerach.value.toLowerCase().trim();
+  selectValue = elSelect.value;
+  languageValue = elSelectLang.value;
 
-  const serchValue = elInputSerach.value.toLowerCase().trim();
-
-  news(serchValue, elSelect.value, elSelectLang.value);
-
+  news(serchValue, selectValue, languageValue, i);
 
   elInputSerach.value = ""
+})
+
+btns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.textContent == "preview") {
+      if (i > 1) {
+        --i
+        elp.textContent = i;
+        news(serchValue, selectValue, languageValue, i);
+      }
+    } else {
+      ++i
+      elp.textContent = i;
+      news(serchValue, selectValue, languageValue, i);
+    }
+  })
 })

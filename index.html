@@ -17,7 +17,6 @@
       <div class="news__container container">
         <h1 class="news__title h1 text-center my-4">Search news</h1>
         <div class="news__inner">
-
           <div class="row">
             <div class="col-9">
               <form class="news__form" autocomplete="off">
@@ -28,7 +27,7 @@
                   </div>
 
                   <div class="col-3">
-                    <select class="news__sort form-select" aria-label="user-sort" required>
+                    <select class="news__sort form-select" aria-label="user-sort">
                       <option selected hidden value="user-select">sort by</option>
                       <option value="relevancy">relevancy</option>
                       <option value="popularity">popularity</option>
@@ -45,12 +44,15 @@
                   <div class="col-2">
                     <button class="btn btn-info text-white" type="submit">search</button>
                   </div>
-
                 </div>
               </form>
             </div>
 
-
+            <div class="text-center mt-4">
+              <button class="prev btn btn-primary" type="button">preview</button>
+              <span class="elp">1</span>
+              <button class="prev btn btn-primary" type="button">next</button>
+            </div>
           </div>
 
           <ul
